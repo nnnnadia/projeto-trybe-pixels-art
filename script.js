@@ -5,11 +5,12 @@
 
 // let paletteList = ['#922b21', '#b03a2e', '#76448a', '#6c3483', '#1f618d', '#2874a6', '#148f77', '#117a65', '#1e8449', '#239b56', '#b7950b', '#b9770e', '#af601a', '#a04000', '#b3b6b7', '#909497', '#717d7e', '#616a6b', '#283747', '#212f3d', '#000000'];
 let paletteList = ['black', 'red', 'green', 'blue'];
+let selectedColor = '';
 
 function createBrush(color) {
   const brushPin = document.createElement('div');
   brushPin.style.backgroundColor = color;
-  brushPin.className = 'color';
+  brushPin.className = `color ${color}`;
   return brushPin;
 }
 
@@ -42,7 +43,18 @@ function createPixelBoard(width, height) {
   }
 }
 
+function selectColor(event) {
+  if (event !== undefined) {
+    selectedColor.classList.remove('selected');
+    selectedColor = event.target;
+  } else {
+    selectedColor = document.querySelector('.black');
+  }
+  selectedColor.classList.add('selected');
+}
+
 window.onload = () => {
   createPalettes(paletteList);
   createPixelBoard(5, 5);
+  selectColor();
 }
