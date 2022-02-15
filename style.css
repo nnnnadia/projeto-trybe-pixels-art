@@ -14,6 +14,13 @@
   border: 1px solid black;
 }
 
-.color span {
-  display: none;
+.pixel {
+  height: 25px;
+  width: 25px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.pixel-line {
+  height: 25px;
 }

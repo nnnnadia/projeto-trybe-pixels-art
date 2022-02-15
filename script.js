@@ -21,6 +21,26 @@ function createPalettes(paletteList) {
   }
 }
 
+function createPixel(position) {
+  let pixel = document.createElement('div');
+  pixel.className = `pixel ${position}`;
+  pixel.style.backgroundColor = '#ffffff';
+  return pixel;
+}
+
+function createPixelBoard(width, height) {
+  let pixelBoard = document.querySelector('#pixel-board');
+  for (let i = 0; i < width; i += 1) {
+    let pixelLine = document.createElement('div');
+    pixelLine.className = 'pixel-line';
+    for (let j = 0; j < height; j += 1) {
+      pixelLine.appendChild(createPixel(`w${i}h${j}`));
+    }
+    pixelBoard.appendChild(pixelLine);
+  }
+}
+
 window.onload = () => {
   createPalettes(paletteList);
+  createPixelBoard(5, 5);
 }
