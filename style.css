@@ -1,0 +1,19 @@
+/*
+  References:
+  - https://htmlcolorcodes.com/color-chart/
+*/
+
+#color-palette {
+  width: 1300px;
+}
+
+.color {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+}
+
+.color span {
+  display: none;
+}
