@@ -7,6 +7,13 @@
   width: 1300px;
 }
 
+#pixel-board {
+  margin-top: 20px;
+  margin: auto;
+  width: 150px;
+  border: 1px solid black;
+}
+
 .color {
   display: inline-block;
   height: 40px;
@@ -15,12 +22,14 @@
 }
 
 .pixel {
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
   border: 1px solid black;
   display: inline-block;
 }
 
 .pixel-line {
-  height: 25px;
+  height: 42px;
+  width: fit-content;
+  margin: auto;
 }

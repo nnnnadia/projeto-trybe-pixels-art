@@ -30,6 +30,8 @@ function createPixel(position) {
 
 function createPixelBoard(width, height) {
   let pixelBoard = document.querySelector('#pixel-board');
+  let maxWidth = width * 40 + 10;
+  pixelBoard.style.width = `${maxWidth}px`;
   for (let i = 0; i < width; i += 1) {
     let pixelLine = document.createElement('div');
     pixelLine.className = 'pixel-line';
