@@ -61,8 +61,20 @@ function changeColor(event) {
   event.target.style.backgroundColor = color;
 }
 
+function clearBoard() {
+  document.querySelectorAll('.pixel').forEach(item => {
+    item.style.backgroundColor = '#fff';
+  });
+}
+
+function createClearBtn() {
+  const btnClear = document.querySelector('#clear-board');
+  btnClear.addEventListener('click', clearBoard);
+}
+
 window.onload = () => {
   createPalettes(paletteList);
+  createClearBtn();
   createPixelBoard(5, 5);
   selectColor();
 }
