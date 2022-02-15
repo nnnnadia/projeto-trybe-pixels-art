@@ -11,6 +11,7 @@ function createBrush(color) {
   const brushPin = document.createElement('div');
   brushPin.style.backgroundColor = color;
   brushPin.className = `color ${color}`;
+  brushPin.addEventListener('click', selectColor);
   return brushPin;
 }
 
@@ -26,6 +27,7 @@ function createPixel(position) {
   let pixel = document.createElement('div');
   pixel.className = `pixel ${position}`;
   pixel.style.backgroundColor = '#ffffff';
+  pixel.addEventListener('click', changeColor)
   return pixel;
 }
 
@@ -44,6 +46,7 @@ function createPixelBoard(width, height) {
 }
 
 function selectColor(event) {
+  console.log(event);
   if (event !== undefined) {
     selectedColor.classList.remove('selected');
     selectedColor = event.target;
@@ -51,6 +54,11 @@ function selectColor(event) {
     selectedColor = document.querySelector('.black');
   }
   selectedColor.classList.add('selected');
+}
+
+function changeColor(event) {
+  let color = selectedColor.style.backgroundColor;
+  event.target.style.backgroundColor = color;
 }
 
 window.onload = () => {
