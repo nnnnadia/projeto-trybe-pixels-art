@@ -1,17 +1,41 @@
 /*
   References:
   - https://htmlcolorcodes.com/color-chart/
+  - https://eslint.org/docs/rules/
 */
 
+body {
+  width: 1366px;
+  height: 768px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#palette-container {
+  margin-left: 20px;
+}
+
 #color-palette {
-  width: 1300px;
+  height: 42px;
+  top: 0px;
+}
+
+#btn-random {
+  margin-top: 10px;
+}
+
+#size-selector {
+  width: fit-content;
+  display: block;
+  margin: 10px 20px;
 }
 
 #pixel-board {
-  margin-top: 20px;
-  margin: auto;
-  width: 150px;
-  border: 1px solid black;
+  width: fit-content;
+  margin-left: 20px;
+  background-color: saddlebrown;
+  padding: 5px;
+  border: 2px solid black;
 }
 
 .color {
@@ -24,6 +48,7 @@
 .pixel {
   height: 40px;
   width: 40px;
+  background-color: white;
   border: 1px solid black;
   display: inline-block;
 }

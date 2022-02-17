@@ -1,10 +1,11 @@
 <!--
   References:
   - https://htmlcolorcodes.com/color-chart/
+  - https://eslint.org/docs/rules/
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +14,20 @@
   <title>Document</title>
 </head>
 <body>
-  <h1 id="title">Paleta de Cores</h1>
-  <div id="color-palette">
+  <div id="palette-container">
+    <h1 id="title">Paleta de Cores</h1>
+    <div id="color-palette"></div>
+    <button id="btn-random">Novas cores</button>
   </div>
-  <button id="clear-board">Limpar</button>
-  <div id="pixel-board"></div>
+  </div>
+  <div id="board-container">
+    <div id="size-selector">
+      <input type="number" name="board-size" id="board-size" min="1" max="50">
+      <button id="generate-board">VQV</button>
+      <button id="clear-board">Limpar</button>
+    </div>
+    <div id="pixel-board"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
