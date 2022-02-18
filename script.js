@@ -2,10 +2,11 @@
   References:
   - https://htmlcolorcodes.com/color-chart/
   - https://eslint.org/docs/rules/
+  - https://developer.mozilla.org/
 */
 
 // let paletteList = ['#922b21', '#b03a2e', '#76448a', '#6c3483', '#1f618d', '#2874a6', '#148f77', '#117a65', '#1e8449', '#239b56', '#b7950b', '#b9770e', '#af601a', '#a04000', '#b3b6b7', '#909497', '#717d7e', '#616a6b', '#283747', '#212f3d', '#000000'];
-const paletteList = ['black', 'orange', 'teal', 'navy'];
+// const paletteList = ['black', 'orange', 'teal', 'navy'];
 let selectedColor = '';
 const pixelBoard = document.querySelector('#pixel-board');
 let boardSize = 5;
@@ -15,25 +16,53 @@ function selectColor(event) {
     selectedColor.classList.remove('selected');
     selectedColor = event.target;
   } else {
-    selectedColor = document.querySelector('.black');
+    selectedColor = document.querySelector('.at0');
   }
   selectedColor.classList.add('selected');
 }
 
-function createBrush(color) {
+function createBrush(color, position) {
   const brushPin = document.createElement('div');
   brushPin.style.backgroundColor = color;
-  brushPin.className = `color ${color}`;
+  brushPin.className = `color ${position}`;
   brushPin.addEventListener('click', selectColor);
   return brushPin;
 }
 
-function createPalettes(colorList) {
+function getRandom() {
+  return Math.round(Math.random() * 255);
+}
+
+function randomColor() {
+  const rColor = getRandom();
+  const gColor = getRandom();
+  const bColor = getRandom();
+  const rgbColor = `rgb(${rColor} , ${gColor} , ${bColor})`;
+  return rgbColor;
+}
+
+function createColorList() {
+  const colorList = ['rgb(0 , 0 , 0)'];
+  for (let i = 0; i < 3; i += 1) {
+    colorList.push(randomColor());
+  }
+  return colorList;
+}
+
+function createPalettes() {
   const colorPalette = document.querySelector('#color-palette');
-  for (let color of colorList) {
-    let brush = createBrush(color);
+  const colorList = createColorList();
+  for (let i = 0; i < colorList.length; i += 1) {
+    const brush = createBrush(colorList[i], `at${i}`);
     colorPalette.appendChild(brush);
   }
+}
+
+function randomPalettes() {
+  document.querySelectorAll('.color').forEach((brush) => {
+    brush.remove();
+  });
+  createPalettes();
 }
 
 function checkSize(width) {
@@ -99,10 +128,12 @@ function createClearBtnListener() {
   btnClear.addEventListener('click', clearBoard);
   const btnGenerate = document.querySelector('#generate-board');
   btnGenerate.addEventListener('click', generateBoard);
+  const btnRandom = document.querySelector('#btn-random');
+  btnRandom.addEventListener('click', randomPalettes);
 }
 
 window.onload = () => {
-  createPalettes(paletteList);
+  createPalettes();
   createClearBtnListener();
   createPixelBoard(boardSize);
   selectColor();
